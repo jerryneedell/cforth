@@ -15,7 +15,7 @@ DICTIONARY=ROM
 
 DICTSIZE ?= 0x3000
 
-CFLAGS += -m32 -march=i386
+#CFLAGS += -m32 -march=i386
 
 TCFLAGS += -Os --specs=nano.specs
 
@@ -50,7 +50,7 @@ FIRST_OBJ = tstartup_a2fxxxm3.o
 
 PLAT_OBJS += ttmain.o mallocembed.o
 PLAT_OBJS += tconsoleio.o 
-PLAT_OBJS += tmss_gpio.o
+#PLAT_OBJS += tmss_gpio.o
 PLAT_OBJS += tmss_uart.o
 PLAT_OBJS += tnewlib_stubs.o
 PLAT_OBJS += tbrownout_isr.o
@@ -80,6 +80,13 @@ LDCMD := $(TLD) $(TLFLAGS) \
 app.elf: $(FIRST_OBJ) $(PLAT_OBJS) $(FORTH_OBJS)
 	@echo Linking $@ ... 
 	arm-none-eabi-g++ $(FIRST_OBJ) $(PLAT_OBJS) $(FORTH_OBJS) -mcpu=cortex-m3 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T$(LDSCRIPT) -Xlinker --gc-sections -Wl,-Map,"app.map" --specs=nano.specs -o $@ $(OBJS) $(USER_OBJS) $(LIBS)
+	@echo 'Invoking: GNU ARM Cross Create Flash Image'
+	arm-none-eabi-objcopy -O ihex app.elf app.hex
+	@echo 'Invoking: GNU ARM Cross Print Size'
+	arm-none-eabi-size --format=berkeley app.elf
+	@echo 'Finished building: $@'
+	@echo ' '
+
 
 
 # LIBM := $(shell $(TCC) --print-file-name=libm.a)

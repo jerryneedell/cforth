@@ -52,37 +52,6 @@ Discarded input sections
  .bss           0x0000000000000000        0x0 tconsoleio.o
  .text.spins    0x0000000000000000        0xe tconsoleio.o
  COMMON         0x0000000000000000        0x4 tconsoleio.o
- .text          0x0000000000000000        0x0 tmss_gpio.o
- .data          0x0000000000000000        0x0 tmss_gpio.o
- .bss           0x0000000000000000        0x0 tmss_gpio.o
- .text.MSS_GPIO_init
-                0x0000000000000000       0x48 tmss_gpio.o
- .text.MSS_GPIO_config
-                0x0000000000000000       0x18 tmss_gpio.o
- .text.MSS_GPIO_set_output
-                0x0000000000000000       0x18 tmss_gpio.o
- .text.MSS_GPIO_drive_inout
-                0x0000000000000000       0x74 tmss_gpio.o
- .text.MSS_GPIO_enable_irq
-                0x0000000000000000       0x3c tmss_gpio.o
- .text.MSS_GPIO_disable_irq
-                0x0000000000000000       0x1c tmss_gpio.o
- .text.MSS_GPIO_clear_irq
-                0x0000000000000000       0x3c tmss_gpio.o
- .rodata.g_config_reg_lut
-                0x0000000000000000       0x80 tmss_gpio.o
- .rodata.g_gpio_irqn_lut
-                0x0000000000000000       0x40 tmss_gpio.o
- .debug_info    0x0000000000000000     0x10bd tmss_gpio.o
- .debug_abbrev  0x0000000000000000      0x283 tmss_gpio.o
- .debug_loc     0x0000000000000000      0x25c tmss_gpio.o
- .debug_aranges
-                0x0000000000000000       0x50 tmss_gpio.o
- .debug_ranges  0x0000000000000000       0x58 tmss_gpio.o
- .debug_line    0x0000000000000000      0x469 tmss_gpio.o
- .debug_str     0x0000000000000000     0x13db tmss_gpio.o
- .comment       0x0000000000000000       0x7a tmss_gpio.o
- .debug_frame   0x0000000000000000       0x8c tmss_gpio.o
  .text          0x0000000000000000        0x0 tmss_uart.o
  .data          0x0000000000000000        0x0 tmss_uart.o
  .bss           0x0000000000000000        0x0 tmss_uart.o
@@ -312,7 +281,6 @@ LOAD tstartup_a2fxxxm3.o
 LOAD ttmain.o
 LOAD mallocembed.o
 LOAD tconsoleio.o
-LOAD tmss_gpio.o
 LOAD tmss_uart.o
 LOAD tnewlib_stubs.o
 LOAD tbrownout_isr.o
@@ -506,7 +474,7 @@ END GROUP
                 0x0000000000000438                ACE_PPE_Flag31_IRQHandler
                 0x000000000000046c                . = ALIGN (0x4)
 
-.text           0x000000000000046c     0xbc54 load address 0x000000006000046c
+.text           0x000000000000046c     0xba38 load address 0x000000006000046c
  CREATE_OBJECT_SYMBOLS
                 0x000000006000046c                __text_load = LOADADDR (.text)
                 0x000000000000046c                __text_start = .
@@ -799,33 +767,27 @@ END GROUP
  .text.byte_checksum
                 0x00000000000040f6       0x1a textend.o
                 0x00000000000040f6                byte_checksum
- .text.kbd_bit_in
-                0x0000000000004110       0x20 textend.o
-                0x0000000000004110                kbd_bit_in
- .text.kbd_bit_out
-                0x0000000000004130       0x2c textend.o
-                0x0000000000004130                kbd_bit_out
- .text          0x000000000000415c       0xa0 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_aeabi_ldivmod.o)
-                0x000000000000415c                __aeabi_ldivmod
- .text          0x00000000000041fc       0x30 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_aeabi_uldivmod.o)
-                0x00000000000041fc                __aeabi_uldivmod
- .text          0x000000000000422c      0x2c4 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_udivmoddi4.o)
-                0x000000000000422c                __udivmoddi4
- .text          0x00000000000044f0        0x4 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_dvmd_tls.o)
-                0x00000000000044f0                __aeabi_ldiv0
-                0x00000000000044f0                __aeabi_idiv0
+ .text          0x0000000000004110       0xa0 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+                0x0000000000004110                __aeabi_ldivmod
+ .text          0x00000000000041b0       0x30 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_aeabi_uldivmod.o)
+                0x00000000000041b0                __aeabi_uldivmod
+ .text          0x00000000000041e0      0x2c4 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_udivmoddi4.o)
+                0x00000000000041e0                __udivmoddi4
+ .text          0x00000000000044a4        0x4 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_dvmd_tls.o)
+                0x00000000000044a4                __aeabi_ldiv0
+                0x00000000000044a4                __aeabi_idiv0
  .text.__libc_init_array
-                0x00000000000044f4       0x48 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libg_nano.a(lib_a-init.o)
-                0x00000000000044f4                __libc_init_array
+                0x00000000000044a8       0x48 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libg_nano.a(lib_a-init.o)
+                0x00000000000044a8                __libc_init_array
  *(.plt)
  *(.gnu.warning)
  *(.glue_7t)
- .glue_7t       0x000000000000453c        0x0 linker stubs
+ .glue_7t       0x00000000000044f0        0x0 linker stubs
  *(.glue_7)
- .glue_7        0x000000000000453c        0x0 linker stubs
+ .glue_7        0x00000000000044f0        0x0 linker stubs
  *(.vfp11_veneer)
- .vfp11_veneer  0x000000000000453c        0x0 linker stubs
-                0x000000000000453c                . = ALIGN (0x4)
+ .vfp11_veneer  0x00000000000044f0        0x0 linker stubs
+                0x00000000000044f0                . = ALIGN (0x4)
  *crtbegin.o(.ctors)
  *(EXCLUDE_FILE(*crtend.o) .ctors)
  *(SORT_BY_NAME(.ctors.*))
@@ -836,81 +798,82 @@ END GROUP
  *crtend.o(.dtors)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
  .rodata.main.str1.4
-                0x000000000000453c        0x4 ttmain.o
- .rodata        0x0000000000004540       0x10 tsystem_a2fxxxm3.o
+                0x00000000000044f0        0x4 ttmain.o
+ .rodata        0x00000000000044f4       0x10 tsystem_a2fxxxm3.o
  .rodata.inner_interpreter.str1.4
-                0x0000000000004550       0x74 tembed.o
+                0x0000000000004504       0x74 tembed.o
  .rodata.execute_word.str1.4
-                0x00000000000045c4       0x13 tembed.o
- *fill*         0x00000000000045d7        0x1 
+                0x0000000000004578       0x13 tembed.o
+ *fill*         0x000000000000458b        0x1 
  .rodata.freelocbuf
-                0x00000000000045d8        0x4 tembed.o
-                0x00000000000045d8                freelocbuf
+                0x000000000000458c        0x4 tembed.o
+                0x000000000000458c                freelocbuf
  .rodata.nullrelmap
-                0x00000000000045dc        0x1 tembed.o
-                0x00000000000045dc                nullrelmap
- *fill*         0x00000000000045dd        0x3 
+                0x0000000000004590        0x1 tembed.o
+                0x0000000000004590                nullrelmap
+ *fill*         0x0000000000004591        0x3 
  .rodata.header.str1.4
-                0x00000000000045e0        0xf tembed.o
- *fill*         0x00000000000045ef        0x1 
+                0x0000000000004594        0xf tembed.o
+ *fill*         0x00000000000045a3        0x1 
  .rodata.read_dictionary.str1.4
-                0x00000000000045f0        0xd tembed.o
- *fill*         0x00000000000045fd        0x3 
+                0x00000000000045a4        0xd tembed.o
+ *fill*         0x00000000000045b1        0x3 
  .rodata.romdict
-                0x0000000000004600     0x7808 tembed.o
-                0x0000000000004600                romdict
+                0x00000000000045b4     0x764e tembed.o
+                0x00000000000045b4                romdict
+ *fill*         0x000000000000bc02        0x2 
  .rodata.romvars
-                0x000000000000be08      0x268 tembed.o
-                0x000000000000be08                romvars
+                0x000000000000bc04      0x258 tembed.o
+                0x000000000000bc04                romvars
  .rodata.ccalls
-                0x000000000000c070       0x30 textend.o
-                0x000000000000c070                ccalls
+                0x000000000000be5c       0x28 textend.o
+                0x000000000000be5c                ccalls
  *(.ARM.extab* .gnu.linkonce.armextab.*)
  *(.gcc_except_table)
  *(.eh_frame_hdr)
  *(.eh_frame)
- .eh_frame      0x000000000000c0a0        0x0 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtbegin.o
+ .eh_frame      0x000000000000be84        0x0 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtbegin.o
  *(.init)
- .init          0x000000000000c0a0        0x4 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crti.o
-                0x000000000000c0a0                _init
- .init          0x000000000000c0a4        0x8 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtn.o
+ .init          0x000000000000be84        0x4 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crti.o
+                0x000000000000be84                _init
+ .init          0x000000000000be88        0x8 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtn.o
  *(.fini)
- .fini          0x000000000000c0ac        0x4 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crti.o
-                0x000000000000c0ac                _fini
- .fini          0x000000000000c0b0        0x8 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtn.o
-                0x000000000000c0b8                PROVIDE (__preinit_array_start = .)
+ .fini          0x000000000000be90        0x4 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crti.o
+                0x000000000000be90                _fini
+ .fini          0x000000000000be94        0x8 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtn.o
+                0x000000000000be9c                PROVIDE (__preinit_array_start = .)
  *(.preinit_array)
-                0x000000000000c0b8                PROVIDE (__preinit_array_end = .)
-                0x000000000000c0b8                PROVIDE (__init_array_start = .)
+                0x000000000000be9c                PROVIDE (__preinit_array_end = .)
+                0x000000000000be9c                PROVIDE (__init_array_start = .)
  *(SORT_BY_NAME(.init_array.*))
  *(.init_array)
- .init_array    0x000000000000c0b8        0x4 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtbegin.o
-                0x000000000000c0bc                PROVIDE (__init_array_end = .)
+ .init_array    0x000000000000be9c        0x4 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtbegin.o
+                0x000000000000bea0                PROVIDE (__init_array_end = .)
                 [!provide]                        PROVIDE (__fini_array_start = .)
  *(.fini_array)
- .fini_array    0x000000000000c0bc        0x4 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtbegin.o
+ .fini_array    0x000000000000bea0        0x4 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtbegin.o
  *(SORT_BY_NAME(.fini_array.*))
                 [!provide]                        PROVIDE (__fini_array_end = .)
-                0x000000000000c0c0                __exidx_start = .
+                0x000000000000bea4                __exidx_start = .
 
-.v4_bx          0x000000000000c0c0        0x0 load address 0x000000006000c0c0
- .v4_bx         0x000000000000c0c0        0x0 linker stubs
+.v4_bx          0x000000000000bea4        0x0 load address 0x000000006000bea4
+ .v4_bx         0x000000000000bea4        0x0 linker stubs
 
-.iplt           0x000000000000c0c0        0x0 load address 0x000000006000c0c0
- .iplt          0x000000000000c0c0        0x0 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtbegin.o
+.iplt           0x000000000000bea4        0x0 load address 0x000000006000bea4
+ .iplt          0x000000000000bea4        0x0 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtbegin.o
 
-.ARM.exidx      0x0000000020000000        0x8 load address 0x000000006000c0c0
+.ARM.exidx      0x0000000020000000        0x8 load address 0x000000006000bea4
  *(.ARM.exidx* .gnu.linkonce.armexidx.*)
  .ARM.exidx     0x0000000020000000        0x8 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_udivmoddi4.o)
                 0x0000000020000008                __exidx_end = .
                 0x0000000020000008                _etext = .
 
-.rel.dyn        0x0000000020000008        0x0 load address 0x000000006000c0c8
+.rel.dyn        0x0000000020000008        0x0 load address 0x000000006000beac
  .rel.iplt      0x0000000020000008        0x0 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtbegin.o
 
-.data           0x0000000020000008       0x1c load address 0x000000006000c0c8
-                0x000000006000c0c8                __data_load = LOADADDR (.data)
-                0x000000006000c0c8                _sidata = LOADADDR (.data)
+.data           0x0000000020000008       0x1c load address 0x000000006000beac
+                0x000000006000beac                __data_load = LOADADDR (.data)
+                0x000000006000beac                _sidata = LOADADDR (.data)
                 0x0000000020000008                __data_start = .
                 0x0000000020000008                _sdata = .
  *(.jcr)
@@ -941,10 +904,10 @@ END GROUP
                 0x0000000020000024                . = ALIGN (0x4)
                 0x0000000020000024                _edata = .
 
-.igot.plt       0x0000000020000024        0x0 load address 0x000000006000c0e4
+.igot.plt       0x0000000020000024        0x0 load address 0x000000006000bec8
  .igot.plt      0x0000000020000024        0x0 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtbegin.o
 
-.bss            0x0000000020000028     0x3e50 load address 0x000000006000c0e4
+.bss            0x0000000020000028     0x3e50 load address 0x000000006000bec8
                 0x0000000020000028                __bss_start__ = .
                 0x0000000020000028                _sbss = .
  *(.shbss)
@@ -1001,7 +964,7 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x0000000000000000      0x5e8
+.debug_aranges  0x0000000000000000      0x5d8
  *(.debug_aranges)
  .debug_aranges
                 0x0000000000000000       0x20 ttmain.o
@@ -1018,12 +981,12 @@ END GROUP
  .debug_aranges
                 0x00000000000001a0      0x3d0 tembed.o
  .debug_aranges
-                0x0000000000000570       0x78 textend.o
+                0x0000000000000570       0x68 textend.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x0000000000000000     0xb5b7
+.debug_info     0x0000000000000000     0xb50a
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x0000000000000000      0x1d8 ttmain.o
  .debug_info    0x00000000000001d8      0x20e mallocembed.o
@@ -1032,9 +995,9 @@ END GROUP
  .debug_info    0x000000000000294d      0x53b tbrownout_isr.o
  .debug_info    0x0000000000002e88      0x5f0 tsystem_a2fxxxm3.o
  .debug_info    0x0000000000003478     0x7bde tembed.o
- .debug_info    0x000000000000b056      0x561 textend.o
+ .debug_info    0x000000000000b056      0x4b4 textend.o
 
-.debug_abbrev   0x0000000000000000     0x201b
+.debug_abbrev   0x0000000000000000     0x2003
  *(.debug_abbrev)
  .debug_abbrev  0x0000000000000000       0xf0 ttmain.o
  .debug_abbrev  0x00000000000000f0      0x11e mallocembed.o
@@ -1043,9 +1006,9 @@ END GROUP
  .debug_abbrev  0x000000000000082e      0x11e tbrownout_isr.o
  .debug_abbrev  0x000000000000094c      0x1b5 tsystem_a2fxxxm3.o
  .debug_abbrev  0x0000000000000b01     0x136f tembed.o
- .debug_abbrev  0x0000000000001e70      0x1ab textend.o
+ .debug_abbrev  0x0000000000001e70      0x193 textend.o
 
-.debug_line     0x0000000000000000     0x6eaf
+.debug_line     0x0000000000000000     0x6db6
  *(.debug_line)
  .debug_line    0x0000000000000000      0x105 ttmain.o
  .debug_line    0x0000000000000105      0x11b mallocembed.o
@@ -1054,9 +1017,9 @@ END GROUP
  .debug_line    0x00000000000016ae      0x16b tbrownout_isr.o
  .debug_line    0x0000000000001819      0x23e tsystem_a2fxxxm3.o
  .debug_line    0x0000000000001a57     0x5039 tembed.o
- .debug_line    0x0000000000006a90      0x41f textend.o
+ .debug_line    0x0000000000006a90      0x326 textend.o
 
-.debug_frame    0x0000000000000000      0xfb4
+.debug_frame    0x0000000000000000      0xf94
  *(.debug_frame)
  .debug_frame   0x0000000000000000       0x28 ttmain.o
  .debug_frame   0x0000000000000028       0x40 mallocembed.o
@@ -1065,13 +1028,13 @@ END GROUP
  .debug_frame   0x0000000000000358       0x30 tbrownout_isr.o
  .debug_frame   0x0000000000000388       0x4c tsystem_a2fxxxm3.o
  .debug_frame   0x00000000000003d4      0xa28 tembed.o
- .debug_frame   0x0000000000000dfc       0xe8 textend.o
- .debug_frame   0x0000000000000ee4       0x44 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_aeabi_ldivmod.o)
- .debug_frame   0x0000000000000f28       0x2c /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_aeabi_uldivmod.o)
- .debug_frame   0x0000000000000f54       0x34 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_udivmoddi4.o)
- .debug_frame   0x0000000000000f88       0x2c /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libg_nano.a(lib_a-init.o)
+ .debug_frame   0x0000000000000dfc       0xc8 textend.o
+ .debug_frame   0x0000000000000ec4       0x44 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+ .debug_frame   0x0000000000000f08       0x2c /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_aeabi_uldivmod.o)
+ .debug_frame   0x0000000000000f34       0x34 /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_udivmoddi4.o)
+ .debug_frame   0x0000000000000f68       0x2c /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libg_nano.a(lib_a-init.o)
 
-.debug_str      0x0000000000000000     0x25fd
+.debug_str      0x0000000000000000     0x25d0
  *(.debug_str)
  .debug_str     0x0000000000000000      0x1fe ttmain.o
                                         0x256 (size before relaxing)
@@ -1087,10 +1050,10 @@ END GROUP
                                         0x51a (size before relaxing)
  .debug_str     0x000000000000181b      0xd19 tembed.o
                                        0x2a21 (size before relaxing)
- .debug_str     0x0000000000002534       0xc9 textend.o
-                                        0x2dc (size before relaxing)
+ .debug_str     0x0000000000002534       0x9c textend.o
+                                        0x2af (size before relaxing)
 
-.debug_loc      0x0000000000000000     0xb899
+.debug_loc      0x0000000000000000     0xb840
  *(.debug_loc)
  .debug_loc     0x0000000000000000       0x22 ttmain.o
  .debug_loc     0x0000000000000022       0x4a mallocembed.o
@@ -1099,7 +1062,7 @@ END GROUP
  .debug_loc     0x0000000000000e48       0x59 tbrownout_isr.o
  .debug_loc     0x0000000000000ea1      0x25c tsystem_a2fxxxm3.o
  .debug_loc     0x00000000000010fd     0x9f3d tembed.o
- .debug_loc     0x000000000000b03a      0x85f textend.o
+ .debug_loc     0x000000000000b03a      0x806 textend.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -1137,47 +1100,45 @@ END GROUP
  .ARM.attributes
                 0x00000000000000e0       0x2d tconsoleio.o
  .ARM.attributes
-                0x000000000000010d       0x2d tmss_gpio.o
+                0x000000000000010d       0x2d tmss_uart.o
  .ARM.attributes
-                0x000000000000013a       0x2d tmss_uart.o
+                0x000000000000013a       0x2d tnewlib_stubs.o
  .ARM.attributes
-                0x0000000000000167       0x2d tnewlib_stubs.o
+                0x0000000000000167       0x2d tbrownout_isr.o
  .ARM.attributes
-                0x0000000000000194       0x2d tbrownout_isr.o
+                0x0000000000000194       0x2d tcore_cm3.o
  .ARM.attributes
-                0x00000000000001c1       0x2d tcore_cm3.o
+                0x00000000000001c1       0x2d tsystem_a2fxxxm3.o
  .ARM.attributes
-                0x00000000000001ee       0x2d tsystem_a2fxxxm3.o
+                0x00000000000001ee       0x2d tembed.o
  .ARM.attributes
-                0x000000000000021b       0x2d tembed.o
+                0x000000000000021b       0x2d textend.o
  .ARM.attributes
-                0x0000000000000248       0x2d textend.o
+                0x0000000000000248       0x1d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_aeabi_ldivmod.o)
  .ARM.attributes
-                0x0000000000000275       0x1d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_aeabi_ldivmod.o)
+                0x0000000000000265       0x1d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_aeabi_uldivmod.o)
  .ARM.attributes
-                0x0000000000000292       0x1d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_aeabi_uldivmod.o)
+                0x0000000000000282       0x2d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_udivmoddi4.o)
  .ARM.attributes
-                0x00000000000002af       0x2d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_udivmoddi4.o)
+                0x00000000000002af       0x1d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_dvmd_tls.o)
  .ARM.attributes
-                0x00000000000002dc       0x1d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/libgcc.a(_dvmd_tls.o)
+                0x00000000000002cc       0x2d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libg_nano.a(lib_a-exit.o)
  .ARM.attributes
-                0x00000000000002f9       0x2d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libg_nano.a(lib_a-exit.o)
+                0x00000000000002f9       0x2d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libg_nano.a(lib_a-impure.o)
  .ARM.attributes
-                0x0000000000000326       0x2d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libg_nano.a(lib_a-impure.o)
+                0x0000000000000326       0x2d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libg_nano.a(lib_a-init.o)
  .ARM.attributes
-                0x0000000000000353       0x2d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libg_nano.a(lib_a-init.o)
+                0x0000000000000353       0x2d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libg_nano.a(lib_a-memset.o)
  .ARM.attributes
-                0x0000000000000380       0x2d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/../../../../arm-none-eabi/lib/thumb/v7-m/nofp/libg_nano.a(lib_a-memset.o)
+                0x0000000000000380       0x2d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtend.o
  .ARM.attributes
-                0x00000000000003ad       0x2d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtend.o
- .ARM.attributes
-                0x00000000000003da       0x1d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtn.o
+                0x00000000000003ad       0x1d /usr/bin/../lib/gcc/arm-none-eabi/9.2.1/thumb/v7-m/nofp/crtn.o
 
 /DISCARD/
  *(.note.GNU-stack)
 OUTPUT(app.elf elf32-littlearm)
 
-.debug_ranges   0x0000000000000000      0x890
+.debug_ranges   0x0000000000000000      0x880
  .debug_ranges  0x0000000000000000       0x10 ttmain.o
  .debug_ranges  0x0000000000000010       0x20 mallocembed.o
  .debug_ranges  0x0000000000000030       0x38 tconsoleio.o
@@ -1185,7 +1146,7 @@ OUTPUT(app.elf elf32-littlearm)
  .debug_ranges  0x0000000000000150       0x10 tbrownout_isr.o
  .debug_ranges  0x0000000000000160       0x30 tsystem_a2fxxxm3.o
  .debug_ranges  0x0000000000000190      0x698 tembed.o
- .debug_ranges  0x0000000000000828       0x68 textend.o
+ .debug_ranges  0x0000000000000828       0x58 textend.o
 
 .comment        0x0000000000000000       0x79
  .comment       0x0000000000000000       0x79 ttmain.o

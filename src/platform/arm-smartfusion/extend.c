@@ -113,45 +113,6 @@ cell byte_checksum(cell len, cell adr)
     return value;
 }
 
-#define GPIO71_MASK 0x80
-#define GPIO72_MASK 0x100
-cell kbd_bit_in()
-{
-    volatile unsigned long *kbdgpio = (unsigned long *)0xd4019008;
-    unsigned long regval;
-    unsigned long bitval;
-    do {
-	regval = *kbdgpio;
-    } while ((regval & GPIO71_MASK) != 0);
-
-    bitval = (regval & GPIO72_MASK) ? 0x100 : 0;
-    
-    do {
-	regval = *kbdgpio;
-    } while ((regval & GPIO71_MASK) == 0);
-
-    return bitval;
-}
-#define DIR_OUT 0x15
-#define DIR_IN 0x18
-cell kbd_bit_out(cell bitval)
-{
-    volatile unsigned long *kbdgpio = (unsigned long *)0xd4019008;
-    unsigned long regval;
-    do {
-	regval = *kbdgpio;
-    } while ((regval & GPIO71_MASK) != 0);
-
-    // Seting direction IN pulls up to 1, OUT drives to 0
-    kbdgpio[bitval ? DIR_IN : DIR_OUT] = GPIO72_MASK;
-    
-    do {
-	regval = *kbdgpio;
-    } while ((regval & GPIO71_MASK) == 0);
-
-    return bitval;
-}
-
 
 cell ((* const ccalls[])()) = {
 // Add your own routines here
@@ -165,8 +126,6 @@ cell ((* const ccalls[])()) = {
   C(set_control_reg) //c control!        { i.value -- }
   C(get_tcm_size)    //c tcm-size@       { -- i.value }
   C(byte_checksum)   //c byte-checksum   { a.adr i.len -- i.checksum }
-  C(kbd_bit_in)      //c kbd-bit-in      { -- i.value }
-  C(kbd_bit_out)     //c kbd-bit-out     { i.value -- }
 };
 
 
