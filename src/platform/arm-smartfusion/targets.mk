@@ -80,12 +80,8 @@ LDCMD := $(TLD) $(TLFLAGS) \
 app.elf: $(FIRST_OBJ) $(PLAT_OBJS) $(FORTH_OBJS)
 	@echo Linking $@ ... 
 	arm-none-eabi-g++ $(FIRST_OBJ) $(PLAT_OBJS) $(FORTH_OBJS) -mcpu=cortex-m3 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T$(LDSCRIPT) -Xlinker --gc-sections -Wl,-Map,"app.map" --specs=nano.specs -o $@ $(OBJS) $(USER_OBJS) $(LIBS)
-	@echo 'Invoking: GNU ARM Cross Create Flash Image'
 	arm-none-eabi-objcopy -O ihex app.elf app.hex
-	@echo 'Invoking: GNU ARM Cross Print Size'
 	arm-none-eabi-size --format=berkeley app.elf
-	@echo 'Finished building: $@'
-	@echo ' '
 
 
 
@@ -108,6 +104,6 @@ app.elf: $(FIRST_OBJ) $(PLAT_OBJS) $(FORTH_OBJS)
 # This rule builds a date stamp object that you can include in the image
 # if you wish.
 
-EXTRA_CLEAN += *.bin *.elf *.dump *.nm *.img date.c $(FORTH_OBJS) $(PLAT_OBJS)
+EXTRA_CLEAN += *.bin *.elf *.dump *.nm *.img date.c *.map *.hex $(FORTH_OBJS) $(PLAT_OBJS)
 
 include $(SRC)/cforth/embed/targets.mk
