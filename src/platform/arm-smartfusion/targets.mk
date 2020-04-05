@@ -71,7 +71,10 @@ FORTH_OBJS = tembed.o textend.o
 
 # Recipe for linking the final image
 
+#LDSCRIPT = $(SRC)/platform/arm-smartfusion/production-relocate-executable.ld
 LDSCRIPT = $(SRC)/platform/arm-smartfusion/debug-in-actel-smartfusion-envm.ld
+#LDSCRIPT = $(SRC)/platform/arm-smartfusion/production-execute-in-place.ld
+
 
 TLDBODY = -T$(LDSCRIPT) $(FIRST_OBJ) $(PLAT_OBJS) $(FORTH_OBJS)
 LDCMD := $(TLD) $(TLFLAGS) \
@@ -81,6 +84,7 @@ app.elf: $(FIRST_OBJ) $(PLAT_OBJS) $(FORTH_OBJS)
 	@echo Linking $@ ... 
 	arm-none-eabi-g++ $(FIRST_OBJ) $(PLAT_OBJS) $(FORTH_OBJS) -mcpu=cortex-m3 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T$(LDSCRIPT) -Xlinker --gc-sections -Wl,-Map,"app.map" --specs=nano.specs -o $@ $(OBJS) $(USER_OBJS) $(LIBS)
 	arm-none-eabi-objcopy -O ihex app.elf app.hex
+#	arm-none-eabi-objcopy -O ihex app.elf app.hex --change-section-lma *-0x60000000
 	arm-none-eabi-size --format=berkeley app.elf
 
 

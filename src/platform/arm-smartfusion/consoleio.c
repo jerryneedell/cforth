@@ -1,6 +1,7 @@
 // Character I/O stubs
 
 #include "mss_uart.h"
+#include "mss_watchdog.h"
 #ifdef ACTEL_STDIO_THRU_UART
 
 #ifndef ACTEL_STDIO_BAUD_RATE
@@ -55,6 +56,12 @@ void init_io()
         MSS_UART_init( &g_mss_uart0, ACTEL_STDIO_BAUD_RATE, (MSS_UART_DATA_8_BITS | MSS_UART_NO_PARITY));
         g_stdio_uart_init_done = 1;
     }
+
+ /*
+      * Disable watchdog.
+      */
+     MSS_WD_disable();
+
 
 }
 
