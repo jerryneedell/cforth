@@ -158,6 +158,24 @@ cell timer1_start()
     MSS_TIM1_start();
 }
 
+cell timer1_stop()
+{
+    // start timer 1
+    MSS_TIM1_stop();
+}
+
+cell timer1_enable()
+{
+    // enable timer 1 IRQ
+    MSS_TIM1_enable_irq();
+}
+
+cell timer1_disable()
+{
+    // disable timer 1 IRQ
+    MSS_TIM1_disable_irq();
+}
+
 
 
 cell ((* const ccalls[])()) = {
@@ -178,6 +196,9 @@ cell ((* const ccalls[])()) = {
   C(getfpgaversion)  //c fpgaversion@    { -- i.fpgaversion }
   C(timer1_init)     //c timer1-init     { i.value -- }
   C(timer1_start)    //c timer1-start    { -- }
+  C(timer1_stop)     //c timer1-stop     { -- }
+  C(timer1_enable)   //c timer1-enable   { -- }
+  C(timer1_disable)  //c timer1-disable  { -- }
 };
 
 
@@ -192,3 +213,12 @@ cell ((* const ccalls[])()) = {
 //
 //  5 6 sum .
 //  p" hello"  byterev  count type
+
+
+// Timer1 ISR
+void Timer1_IRQHandler(void)
+{
+    // pulse counters
+    fpgabase[0x4080/4] = 1;
+    MSS_TIM1_clear_irq();
+}
