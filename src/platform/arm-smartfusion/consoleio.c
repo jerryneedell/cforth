@@ -39,8 +39,13 @@ int getkey()
   uint8_t rx_size;
   do
         {
+            //Reload watchdog.
+            MSS_WD_reload();
             rx_size = MSS_UART_get_rx(&g_mss_uart0, &key, 1);
         }while(rx_size == 0);
+
+
+
   return  key;
 }
 
@@ -58,9 +63,9 @@ void init_io()
     }
 
  /*
-      * Disable watchdog.
+      * Reload watchdog.
       */
-     MSS_WD_disable();
+     MSS_WD_reload();
 
 
 }

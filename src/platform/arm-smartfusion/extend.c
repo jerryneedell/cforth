@@ -2,14 +2,20 @@
 // See "ccalls" below.
 
 #include "forth.h"
+#include "mss_watchdog.h"
+#include "mss_timer.h"
 
 // Prototypes
 
+// FPGA registers - relative to *fgpabase - 0x40050000
+#define FPGADATE 0x80/4
+#define FPGAVERSION 0x84/4
 
 #define DECLARE_REGS \
     volatile unsigned long *fifo = (volatile unsigned long *)0xd4035010; \
-    volatile unsigned long *stat = (volatile unsigned long *)0xd4035008
+    volatile unsigned long *stat = (volatile unsigned long *)0xd4035008;
 
+volatile unsigned long *fpgabase = (volatile unsigned long *)0x40050000;
 
 void lfill(cell value, cell len, cell adr)
 {
@@ -113,6 +119,46 @@ cell byte_checksum(cell len, cell adr)
     return value;
 }
 
+cell wdog()
+{
+    // reload watchdog
+    MSS_WD_reload();
+}
+
+cell wdog_disable()
+{
+    // disable watchdog
+    MSS_WD_disable();
+}
+
+cell getfpgadate()
+{
+    unsigned long int fpgadate;
+    fpgadate = fpgabase[FPGADATE];
+    return fpgadate;
+}
+
+cell getfpgaversion()
+{
+    unsigned long int fpgaversion;
+    fpgaversion = fpgabase[FPGAVERSION];
+    return fpgaversion;
+}
+
+cell timer1_init(cell counter)
+{
+    // initialize timer 1
+    MSS_TIM1_init(MSS_TIMER_PERIODIC_MODE);
+    MSS_TIM1_load_background(counter);
+}
+
+cell timer1_start()
+{
+    // start timer 1
+    MSS_TIM1_start();
+}
+
+
 
 cell ((* const ccalls[])()) = {
 // Add your own routines here
@@ -126,6 +172,12 @@ cell ((* const ccalls[])()) = {
   C(set_control_reg) //c control!        { i.value -- }
   C(get_tcm_size)    //c tcm-size@       { -- i.value }
   C(byte_checksum)   //c byte-checksum   { a.adr i.len -- i.checksum }
+  C(wdog)            //c wdog            { -- }
+  C(wdog_disable)    //c wdog-disable    { -- }
+  C(getfpgadate)     //c fpgadate@       { -- i.fpgadate }
+  C(getfpgaversion)  //c fpgaversion@    { -- i.fpgaversion }
+  C(timer1_init)     //c timer1-init     { i.value -- }
+  C(timer1_start)    //c timer1-start    { -- }
 };
 
 
