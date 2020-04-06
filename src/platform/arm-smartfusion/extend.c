@@ -219,6 +219,8 @@ cell ((* const ccalls[])()) = {
 void Timer1_IRQHandler(void)
 {
     // pulse counters
-    fpgabase[0x4080/4] = 1;
+    fpgabase[0x4080/4] = 0x1fffff;
+    // toggle LEDs
+    fpgabase[0] ^= 0xff;
     MSS_TIM1_clear_irq();
 }
