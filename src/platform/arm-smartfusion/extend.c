@@ -11,9 +11,6 @@
 #define FPGADATE 0x80/4
 #define FPGAVERSION 0x84/4
 
-#define DECLARE_REGS \
-    volatile unsigned long *fifo = (volatile unsigned long *)0xd4035010; \
-    volatile unsigned long *stat = (volatile unsigned long *)0xd4035008;
 
 volatile unsigned long *fpgabase = (volatile unsigned long *)0x40050000;
 
@@ -82,31 +79,6 @@ cell randomcheck(cell len, cell adr)
     return -1;
 }
 
-
-void set_control_reg(cell arg)
-{
-    __asm__ __volatile__ (
-        "mcr	p15, 0, %0, c1, c0, 0\n\t"
-        : : "r" (arg));
-}
-
-cell get_control_reg()
-{
-    unsigned long value;
-    __asm__ __volatile__ (
-        "mrc	p15, 0, %0, c1, c0, 0\n\t"
-        : "=r" (value));
-    return value;
-}
-
-cell get_tcm_size()
-{
-    unsigned long value;
-    __asm__ __volatile__ (
-        "mrc	p15, 0, %0, c0, c0, 2\n\t"
-        : "=r" (value));
-    return value;
-}
 
 
 cell byte_checksum(cell len, cell adr)
@@ -186,9 +158,6 @@ cell ((* const ccalls[])()) = {
   C(inccheck)        //c inc-check       { a.adr i.len -- i.erraddr }
   C(randomfill)      //c random-fill     { a.adr i.len -- }
   C(randomcheck)     //c random-check    { a.adr i.len -- i.erraddr }
-  C(get_control_reg) //c control@        { -- i.value }
-  C(set_control_reg) //c control!        { i.value -- }
-  C(get_tcm_size)    //c tcm-size@       { -- i.value }
   C(byte_checksum)   //c byte-checksum   { a.adr i.len -- i.checksum }
   C(wdog)            //c wdog            { -- }
   C(wdog_disable)    //c wdog-disable    { -- }
