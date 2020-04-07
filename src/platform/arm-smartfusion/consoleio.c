@@ -2,7 +2,6 @@
 
 #include "mss_uart.h"
 #include "mss_watchdog.h"
-#ifdef ACTEL_STDIO_THRU_UART
 
 #ifndef ACTEL_STDIO_BAUD_RATE
 #define ACTEL_STDIO_BAUD_RATE  MSS_UART_57600_BAUD
@@ -13,7 +12,6 @@
  */
 static int g_stdio_uart_init_done = 0;
 
-#endif  /* ACTEL_STDIO_THRU_UART */
 
 
 

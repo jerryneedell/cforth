@@ -10,7 +10,8 @@
 // FPGA registers - relative to *fgpabase - 0x40050000
 #define FPGADATE 0x80/4
 #define FPGAVERSION 0x84/4
-
+#define FORTHVERSION 0x0100
+#define FORTHDATE 0x7e40407
 
 volatile unsigned long *fpgabase = (volatile unsigned long *)0x40050000;
 
@@ -117,6 +118,16 @@ cell getfpgaversion()
     return fpgaversion;
 }
 
+cell getforthdate()
+{
+    return FORTHDATE;
+}
+
+cell getforthversion()
+{
+    return FORTHVERSION;
+}
+
 cell timer1_init(cell counter)
 {
     // initialize timer 1
@@ -163,6 +174,8 @@ cell ((* const ccalls[])()) = {
   C(wdog_disable)    //c wdog-disable    { -- }
   C(getfpgadate)     //c fpgadate@       { -- i.fpgadate }
   C(getfpgaversion)  //c fpgaversion@    { -- i.fpgaversion }
+  C(getforthdate)    //c forthdate@      { -- i.forthdate }
+  C(getforthversion) //c forthversion@   { -- i.forthversion }
   C(timer1_init)     //c timer1-init     { i.value -- }
   C(timer1_start)    //c timer1-start    { -- }
   C(timer1_stop)     //c timer1-stop     { -- }

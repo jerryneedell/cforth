@@ -8,14 +8,12 @@ CPU_VARIANT=-mthumb -mcpu=cortex-m3
 include $(SRC)/cpu/arm/compiler.mk
 
 
-# Defining ACTEL_STDIO_THRU_UART direct UART IO to USB console
-DEFS += -DACTEL_STDIO_THRU_UART
+# extra definitions
+DEFS += 
 
 DICTIONARY=ROM
 
 DICTSIZE ?= 0x3000
-
-#CFLAGS += -m32 -march=i386
 
 TCFLAGS += -Os --specs=nano.specs
 
@@ -28,29 +26,23 @@ TCFLAGS += -ffunction-sections -fdata-sections
 TCFLAGS += -ffunction-sections -fdata-sections
 TLFLAGS += --gc-sections
 
-# VPATH += $(SRC)/cpu/arm
 VPATH += $(SRC)/platform/arm-smartfusion
-#VPATH += $(SRC)/platform/arm-smartfusion/CMSIS
 VPATH += $(SRC)/lib
 
 # This directory, including board information
 INCS += -I$(SRC)/platform/arm-smartfusion
-#INCS += -I$(SRC)/platform/arm-smartfusion/CMSIS
 
 include $(SRC)/common.mk
 include $(SRC)/cforth/targets.mk
 
 # Platform-specific object files for low-level startup and platform I/O
 
-# CLKCONFIG = -1v8-msi2000
-# CLKCONFIG ?= -1v8-hsi16m-16m
 
 # FIRST_OBJ = tstartup_stm32f10x_mdp.o
 FIRST_OBJ = tstartup_a2fxxxm3.o
 
 PLAT_OBJS += ttmain.o mallocembed.o
 PLAT_OBJS += tconsoleio.o 
-#PLAT_OBJS += tmss_gpio.o
 PLAT_OBJS += tmss_uart.o
 PLAT_OBJS += tnewlib_stubs.o
 PLAT_OBJS += tbrownout_isr.o
@@ -59,8 +51,6 @@ PLAT_OBJS += tsystem_a2fxxxm3.o
 
 ttmain.o: vars.h
 
-
-# EXTEND_OBJS ?= ti2c.o
 
 PLAT_OBJS += $(EXTEND_OBJS)
 
