@@ -33,8 +33,8 @@ cell 2* value adr-width
 
 : l-dln   (s addr --- )
    ??cr   dup adr-width u.r   2 spaces
-   dup 16 bounds do  i @ .8  4 +loop  space
-   16   bounds ?do   i c@ emit.   loop   ;
+   dup 16 bounds do  i @ .8  4 +loop  space ;
+\   16   bounds ?do   i c@ emit.   loop   ;
 
 \ dump and fill memory utility                        06oct83map
 : .head   (s addr len -- addr' len' )

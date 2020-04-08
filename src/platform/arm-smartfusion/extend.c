@@ -11,7 +11,7 @@
 #define FPGADATE 0x80/4
 #define FPGAVERSION 0x84/4
 #define FORTHVERSION 0x0100
-#define FORTHDATE 0x7e40407
+#define FORTHDATE 0x7e40408
 
 volatile unsigned long *fpgabase = (volatile unsigned long *)0x40050000;
 

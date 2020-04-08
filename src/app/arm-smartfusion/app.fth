@@ -7,6 +7,7 @@ $3000 $5000 npatch load-base
 : bitset  ( mask adr -- )  tuck l@ or swap l!  ;
 : bitclr  ( mask adr -- )  tuck l@ swap invert and swap l!  ;
 
+: test fpgadate@ u. fpgaversion@ u. forthdate@ u. forthversion@ u. ;
 
 \ Replace 'quit' to make CForth auto-run some application code
 \ instead of just going interactive.
