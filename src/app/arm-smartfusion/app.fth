@@ -21,7 +21,7 @@ decimal
 
 : x-dln   (s addr --- )
    ??cr   dup adr-width u.r   2 spaces
-   dup 16 bounds do  i @ .8  4 +loop  space ;
+   dup 16 bounds do  i l@ .8  4 +loop  space ;
 
 forth definitions
 : xdump  ( addr len -- )

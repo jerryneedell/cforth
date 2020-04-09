@@ -2,8 +2,7 @@
 
 TOPDIR=../..
 
-#CONFIG += -DBITS32 -DT16
-CONFIG += -DBITS32
+CONFIG += -DBITS32 -DT16
 
 ifneq "$(shell getconf LONG_BIT)" "32"
 CFLAGS += -m32
