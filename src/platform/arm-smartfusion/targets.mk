@@ -61,9 +61,12 @@ FORTH_OBJS = tembed.o textend.o
 
 # Recipe for linking the final image
 
-#LDSCRIPT = $(SRC)/platform/arm-smartfusion/production-relocate-executable.ld
+# use this for a version that cah be uplaoded via J-Link 
 LDSCRIPT = $(SRC)/platform/arm-smartfusion/debug-in-actel-smartfusion-envm.ld
+# use this for a version to be embedded in to Libero build
 #LDSCRIPT = $(SRC)/platform/arm-smartfusion/production-execute-in-place.ld
+#  not currently used  -- keeping as an example
+#LDSCRIPT = $(SRC)/platform/arm-smartfusion/production-relocate-executable.ld
 
 
 TLDBODY = -T$(LDSCRIPT) $(FIRST_OBJ) $(PLAT_OBJS) $(FORTH_OBJS)
@@ -74,8 +77,9 @@ app.elf: $(FIRST_OBJ) $(PLAT_OBJS) $(FORTH_OBJS)
 	@echo Linking $@ ... 
 	arm-none-eabi-g++ $(FIRST_OBJ) $(PLAT_OBJS) $(FORTH_OBJS) -mcpu=cortex-m3 -mthumb -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections  -g3 -T$(LDSCRIPT) -Xlinker --gc-sections -Wl,-Map,"app.map" --specs=nano.specs -o $@ $(OBJS) $(USER_OBJS) $(LIBS)
 	arm-none-eabi-objcopy -O ihex app.elf app.hex
-#	arm-none-eabi-objcopy -O ihex app.elf app.hex --change-section-lma *-0x60000000
 	arm-none-eabi-size --format=berkeley app.elf
+#  use this only with the production-relocatable-executable.ld
+#	arm-none-eabi-objcopy -O ihex app.elf app.hex --change-section-lma *-0x60000000
 
 
 
