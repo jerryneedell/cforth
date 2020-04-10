@@ -11,6 +11,13 @@ $3000 $5000 npatch load-base
 \ add leading zeros  ( value n -- )
 : Z.R >R (U.) R> OVER - 200 MIN 0 MAX 0 ?DO ." 0" LOOP TYPE ;
 
+\ test word
+: timertest ." starting up" cr a00000 timer1-init timer1-start timer1-enable ;
+
+: showdate forthdate@ dup 10 >> decimal 4 Z.R ." /" 
+     dup 8 >> ff and 2 Z.R ." /" 
+     ff and 2 Z.R 
+     hex space ." v" forthversion@ 4 Z.R ; 
 
 only forth also hidden also definitions
 decimal
@@ -39,7 +46,7 @@ only forth also definitions
 
 \ Replace 'quit' to make CForth auto-run some application code
 \ instead of just going interactive.
-: app  ." CForth" cr hex quit  ;
+: app  ." CForth " showdate cr hex quit  ;
 
 \ " ../objs/tester" $chdir drop
 

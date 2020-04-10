@@ -10,8 +10,8 @@
 // FPGA registers - relative to *fgpabase - 0x40050000
 #define FPGADATE 0x80/4
 #define FPGAVERSION 0x84/4
-#define FORTHVERSION 0x0002
-#define FORTHDATE 0x7e40409
+#define FORTHVERSION 0x0000
+#define FORTHDATE 0x7e4040a
 #define LED 0
 #define CICCLEAR 0x200C/4
 #define COUNTER 0xA00000
