@@ -16,7 +16,7 @@ make
 * Forth words
   * wdog   ( -- )  reloads the watchdog -- use in any long loops
   * wdog-disable ( -- )  disables the Watchdog -- only reenabled afte Power Cycle (not RESET)
-* Watchdog is reloaded automatically while at the keyboard prompt
+* Watchdog is reloaded automatically while at the keyboard prompt or by key?
 * Must be reloaded manually if long words are executed.
 
 

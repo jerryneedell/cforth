@@ -11,7 +11,7 @@
 #define FPGADATE 0x80/4
 #define FPGAVERSION 0x84/4
 #define FORTHVERSION 0x0000
-#define FORTHDATE 0x7e4040a
+#define FORTHDATE 0x7e4040c
 #define LED 0
 #define CICCLEAR 0x200C/4
 #define COUNTER 0xA00000
