@@ -11,6 +11,15 @@ make clean
 make
 ```
 
+# Watchdog
+* Watchdog is enabled buy default (approx 5 seconds)
+* Forth words
+  * wdog   ( -- )  reloads the watchdog -- use in any long loops
+  * wdog-disable ( -- )  disables the Watchdog -- only reenabled afte Power Cycle (not RESET)
+* Watchdog is reloaded automatically while at the keyboard prompt
+* Must be reloaded manually if long words are executed.
+
+
 Requires arm-none-eabi toolchain:
 https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads
 built with Version 9-2019-q4-major
