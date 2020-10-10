@@ -39,15 +39,14 @@ include $(SRC)/cforth/targets.mk
 
 
 # FIRST_OBJ = tstartup_stm32f10x_mdp.o
-FIRST_OBJ = tstartup_a2fxxxm3.o
+FIRST_OBJ = tstartup_m2sxxx.o
 
 PLAT_OBJS += ttmain.o mallocembed.o
 PLAT_OBJS += tconsoleio.o 
 PLAT_OBJS += tmss_uart.o
 PLAT_OBJS += tnewlib_stubs.o
-PLAT_OBJS += tbrownout_isr.o
 PLAT_OBJS += tcore_cm3.o
-PLAT_OBJS += tsystem_a2fxxxm3.o
+PLAT_OBJS += tsystem_m2sxxx.o
 
 ttmain.o: vars.h
 
@@ -62,11 +61,11 @@ FORTH_OBJS = tembed.o textend.o
 # Recipe for linking the final image
 
 # use this for a version that cah be uplaoded via J-Link 
-LDSCRIPT = $(SRC)/platform/arm-smartfusion2/debug-in-actel-smartfusion2-envm.ld
+LDSCRIPT = $(SRC)/platform/arm-smartfusion2/debug-in-microsemi-smartfusion2-envm.ld
 # use this for a version to be embedded in to Libero build
-#LDSCRIPT = $(SRC)/platform/arm-smartfusion2/production-execute-in-place.ld
+#LDSCRIPT = $(SRC)/platform/arm-smartfusion2/production-smartfusion2-execute-in-place.ld
 #  not currently used  -- keeping as an example
-#LDSCRIPT = $(SRC)/platform/arm-smartfusion2/production-relocate-executable.ld
+#LDSCRIPT = $(SRC)/platform/arm-smartfusion2/production-smartfusion2-relocate-executable.ld
 
 
 TLDBODY = -T$(LDSCRIPT) $(FIRST_OBJ) $(PLAT_OBJS) $(FORTH_OBJS)

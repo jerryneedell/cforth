@@ -114,7 +114,7 @@ cell wdog()
 cell wdog_disable()
 {
     // disable watchdog
-    MSS_WD_disable();
+    //MSS_WD_disable();
 }
 
 cell getfpgadate()
@@ -151,10 +151,10 @@ cell timer1_init(cell counter)
 cell fabric_enable()
 {
      /* Clear Pending Fabric Interrupts*/
-    NVIC_ClearPendingIRQ(Fabric_IRQn);
+    NVIC_ClearPendingIRQ(FabricIrq0_IRQn);
 \
      /* Enable Fabric Interrupt*/
-    NVIC_EnableIRQ(Fabric_IRQn);
+    NVIC_EnableIRQ(FabricIrq0_IRQn);
 
 
     /* Configuring the Interrupt control register in FPGA fabric
@@ -169,9 +169,9 @@ cell fabric_disable()
      * This will disable the Interrupt in the FPGA*/
     (*((uint32_t volatile *)(FABRIC_INT_CTRL_BASE_ADDR + FABRIC_INTR_CLR_OFF_ADDR)) = FABRIC_INTR_CLR);
      /* Disabling Fabric Interrupt*/
-    NVIC_DisableIRQ(Fabric_IRQn);
+    NVIC_DisableIRQ(FabricIrq0_IRQn);
      /* Clear Pending Fabric Interrupts*/
-    NVIC_ClearPendingIRQ(Fabric_IRQn);
+    NVIC_ClearPendingIRQ(FabricIrq0_IRQn);
 
 }
 
@@ -273,7 +273,7 @@ void Fabric_IRQHandler( void )
     /* Clearing the Interrupts in the FPGA */
     (*((uint32_t volatile *)(FABRIC_GPIO_BASE_ADDR + FABRIC_INTR_CLR_OFF_ADDR)) = FABRIC_INTR_CLR);
 
-    NVIC_ClearPendingIRQ( Fabric_IRQn );
+    NVIC_ClearPendingIRQ( FabricIrq0_IRQn );
 
   }
 
