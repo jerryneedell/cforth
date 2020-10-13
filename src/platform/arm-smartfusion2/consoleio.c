@@ -21,7 +21,7 @@ void raw_putchar(char c)
 /*--------------------------------------------------------------------------
      * Output text to the UART.
      */
-    MSS_UART_polled_tx( &g_mss_uart0, (uint8_t *)&c, 1 );
+    MSS_UART_polled_tx( &g_mss_uart1, (uint8_t *)&c, 1 );
     
 }
 
@@ -30,7 +30,7 @@ int kbhit() {
             //Reload watchdog.
             MSS_WD_reload();
 
-  return   MSS_UART_get_rx(&g_mss_uart0, &key, 1);
+  return   MSS_UART_get_rx(&g_mss_uart1, &key, 1);
 }
 
 int getkey()
@@ -41,7 +41,7 @@ int getkey()
         {
             //Reload watchdog.
             MSS_WD_reload();
-            rx_size = MSS_UART_get_rx(&g_mss_uart0, &key, 1);
+            rx_size = MSS_UART_get_rx(&g_mss_uart1, &key, 1);
         }while(rx_size == 0);
 
 
@@ -58,7 +58,7 @@ void init_io()
      */
     if ( !g_stdio_uart_init_done )
     {
-        MSS_UART_init( &g_mss_uart0, ACTEL_STDIO_BAUD_RATE, (MSS_UART_DATA_8_BITS | MSS_UART_NO_PARITY));
+        MSS_UART_init( &g_mss_uart1, ACTEL_STDIO_BAUD_RATE, (MSS_UART_DATA_8_BITS | MSS_UART_NO_PARITY));
         g_stdio_uart_init_done = 1;
     }
 
