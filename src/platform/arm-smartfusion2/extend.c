@@ -2,11 +2,10 @@
 // See "ccalls" below.
 
 #include "forth.h"
-#include "mss_watchdog.h"
 #include "mss_timer.h"
 
 // Prototypes
-#define FORTHVERSION 0x0000
+#define FORTHVERSION 0x0001
 #define FORTHDATE 0x7e40a0d
 
 void lfill(cell value, cell len, cell adr)
@@ -86,11 +85,8 @@ cell byte_checksum(cell len, cell adr)
     return value;
 }
 
-cell wdog()
-{
-    // reload watchdog
-    MSS_WD_reload();
-}
+
+
 cell getforthdate()
 {
     return FORTHDATE;
@@ -111,7 +107,6 @@ cell ((* const ccalls[])()) = {
   C(randomfill)      //c random-fill     { a.adr i.len -- }
   C(randomcheck)     //c random-check    { a.adr i.len -- i.erraddr }
   C(byte_checksum)   //c byte-checksum   { a.adr i.len -- i.checksum }
-  C(wdog)            //c wdog            { -- }
   C(getforthdate)    //c forthdate@      { -- i.forthdate }
   C(getforthversion) //c forthversion@   { -- i.forthversion }
 };
