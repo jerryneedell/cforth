@@ -11,8 +11,6 @@ $3000 $5000 npatch load-base
 \ add leading zeros  ( value n -- )
 : Z.R >R (U.) R> OVER - 200 MIN 0 MAX 0 ?DO ." 0" LOOP TYPE ;
 
-\ test word
-: timertest ." starting up" cr a00000 timer1-init timer1-start timer1-enable ;
 
 : showdate forthdate@ dup 10 >> decimal 4 Z.R ." /" 
      dup 8 >> ff and 2 Z.R ." /" 
