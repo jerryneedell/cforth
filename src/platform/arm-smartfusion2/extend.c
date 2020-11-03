@@ -6,7 +6,7 @@
 
 // Prototypes
 #define FORTHVERSION 0x0001
-#define FORTHDATE 0x7e40a0d
+#define FORTHDATE 0x7e40b03
 
 void lfill(cell value, cell len, cell adr)
 {
