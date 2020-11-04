@@ -1,6 +1,10 @@
-/*-----------------------------------------------------------*/
-/* MDDR Initialization values                                */
-/*-----------------------------------------------------------*/
+/*=============================================================*/
+/* Created by Microsemi SmartDesign Wed Nov 04 10:26:17 2020   */
+/*                                                             */
+/* Warning: Do not modify this file, it may lead to unexpected */
+/*          functional failures in your design.                */
+/*                                                             */
+/*=============================================================*/
 
 #define MDDR_DDRC_DYN_SOFT_RESET_CR 0x0
 #define MDDR_DDRC_RESERVED0 0x0
@@ -15,12 +19,12 @@
 #define MDDR_DDRC_ADDR_MAP_COL_2_CR 0xFFFF
 #define MDDR_DDRC_ADDR_MAP_COL_3_CR 0x3300
 #define MDDR_DDRC_ADDR_MAP_ROW_1_CR 0x7777
-#define MDDR_DDRC_ADDR_MAP_ROW_2_CR 0x7FF
+#define MDDR_DDRC_ADDR_MAP_ROW_2_CR 0x777
 #define MDDR_DDRC_INIT_1_CR 0x1
 #define MDDR_DDRC_CKE_RSTN_CYCLES_1_CR 0x4200
 #define MDDR_DDRC_CKE_RSTN_CYCLES_2_CR 0x8
 #define MDDR_DDRC_INIT_MR_CR 0x32
-#define MDDR_DDRC_INIT_EMR_CR 0x0
+#define MDDR_DDRC_INIT_EMR_CR 0x2
 #define MDDR_DDRC_INIT_EMR2_CR 0x0
 #define MDDR_DDRC_INIT_EMR3_CR 0x0
 #define MDDR_DDRC_DRAM_BANK_TIMING_PARAM_CR 0x0
@@ -31,8 +35,8 @@
 #define MDDR_DDRC_DRAM_RD_WR_TRNARND_TIME_CR 0x178
 #define MDDR_DDRC_DRAM_T_PD_CR 0x0
 #define MDDR_DDRC_DRAM_BANK_ACT_TIMING_CR 0x130
-#define MDDR_DDRC_ODT_PARAM_1_CR 0x10
-#define MDDR_DDRC_ODT_PARAM_2_CR 0x0
+#define MDDR_DDRC_ODT_PARAM_1_CR 0x014
+#define MDDR_DDRC_ODT_PARAM_2_CR 0x010
 #define MDDR_DDRC_DEBUG_CR 0x3300
 #define MDDR_DDRC_MODE_REG_RD_WR_CR 0x0
 #define MDDR_DDRC_MODE_REG_DATA_CR 0x0
@@ -117,7 +121,7 @@
 #define MDDR_PHY_GATELVL_INIT_RATIO_2_CR 0x0
 #define MDDR_PHY_GATELVL_INIT_RATIO_3_CR 0x0
 #define MDDR_PHY_GATELVL_INIT_RATIO_4_CR 0x0
-#define MDDR_PHY_LOCAL_ODT_CR 0x1
+#define MDDR_PHY_LOCAL_ODT_CR 0x0
 #define MDDR_PHY_INVERT_CLKOUT_CR 0x0
 #define MDDR_PHY_RD_DQS_SLAVE_DELAY_1_CR 0x0
 #define MDDR_PHY_RD_DQS_SLAVE_DELAY_2_CR 0x0

@@ -1,12 +1,11 @@
-/**************************************************************************
- * (c) Copyright 2012 Microsemi SoC Products Group.  All rights reserved.
- *
- * Smartfusion2 system configuration.
- *   - Automatically created by Microsemi Libero SoC Thu Jun 12 12:32:49 2014
- *
- * Warning:  Do not modify this file, it may lead to unexpected
- *           functional failures in your Microcontroller Subsystem.
- */
+/*=============================================================*/
+/* Created by Microsemi SmartDesign Tue Nov 03 18:19:08 2020   */
+/*                                                             */
+/* Warning: Do not modify this file, it may lead to unexpected */
+/*          functional failures in your design.                */
+/*                                                             */
+/*=============================================================*/
+
 #ifndef SYS_CONFIG_MSS_CLOCKS
 #define SYS_CONFIG_MSS_CLOCKS
 
@@ -14,9 +13,9 @@
 #define MSS_SYS_MDDR_CLK_FREQ           100000000u
 #define MSS_SYS_APB_0_CLK_FREQ          100000000u
 #define MSS_SYS_APB_1_CLK_FREQ          100000000u
-#define MSS_SYS_APB_2_CLK_FREQ          100000000u
+#define MSS_SYS_APB_2_CLK_FREQ          25000000u
 #define MSS_SYS_FIC_0_CLK_FREQ          50000000u
-#define MSS_SYS_FIC_1_CLK_FREQ          50000000u
-#define MSS_SYS_FIC64_CLK_FREQ          50000000u
+#define MSS_SYS_FIC_1_CLK_FREQ          100000000u
+#define MSS_SYS_FIC64_CLK_FREQ          100000000u
 
 #endif /* SYS_CONFIG_MSS_CLOCKS */

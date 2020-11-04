@@ -44,7 +44,6 @@
 
 #define MSS_SYS_SERDES_1_CONFIG_BY_CORTEX   0
 #if MSS_SYS_SERDES_1_CONFIG_BY_CORTEX
-#include "sys_config_SERDESIF_1.h"
 #endif
 
 #define MSS_SYS_SERDES_2_CONFIG_BY_CORTEX   0

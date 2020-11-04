@@ -47,6 +47,7 @@ PLAT_OBJS += tmss_uart.o
 PLAT_OBJS += tnewlib_stubs.o
 PLAT_OBJS += tcore_cm3.o
 PLAT_OBJS += tsystem_m2sxxx.o
+PLAT_OBJS += tsys_config.o
 
 ttmain.o: vars.h
 

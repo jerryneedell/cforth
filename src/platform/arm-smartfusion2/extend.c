@@ -5,8 +5,8 @@
 #include "mss_timer.h"
 
 // Prototypes
-#define FORTHVERSION 0x0001
-#define FORTHDATE 0x7e40b03
+#define FORTHVERSION 0x0002
+#define FORTHDATE 0x7e40b04
 
 void lfill(cell value, cell len, cell adr)
 {

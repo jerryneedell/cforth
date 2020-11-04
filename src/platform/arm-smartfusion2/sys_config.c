@@ -7,7 +7,7 @@
  *
  */
 
-#include "CMSIS/m2sxxx.h"
+#include "m2sxxx.h"
 #include "sys_init_cfg_types.h"
 #include "sys_config.h"
 
