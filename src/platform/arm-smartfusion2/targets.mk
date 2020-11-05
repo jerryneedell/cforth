@@ -44,6 +44,7 @@ FIRST_OBJ = tstartup_m2sxxx.o
 PLAT_OBJS += ttmain.o mallocembed.o
 PLAT_OBJS += tconsoleio.o 
 PLAT_OBJS += tmss_uart.o
+PLAT_OBJS += tmss_rtc.o
 PLAT_OBJS += tnewlib_stubs.o
 PLAT_OBJS += tcore_cm3.o
 PLAT_OBJS += tsystem_m2sxxx.o

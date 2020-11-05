@@ -2,11 +2,17 @@
 // See "ccalls" below.
 
 #include "forth.h"
-#include "mss_timer.h"
+#include "mss_rtc.h"
 
 // Prototypes
 #define FORTHVERSION 0x0002
-#define FORTHDATE 0x7e40b04
+#define FORTHDATE 0x7e40b05
+// FPGA registers - relative to *fgpabase - 0x30000000
+#define FPGADATE 0x80/4
+#define FPGAVERSION 0x84/4
+
+volatile unsigned long *fpgabase = (volatile unsigned long *)0x30000000;
+
 
 void lfill(cell value, cell len, cell adr)
 {
@@ -86,6 +92,20 @@ cell byte_checksum(cell len, cell adr)
 }
 
 
+cell getfpgadate()
+{
+    unsigned long int fpgadate;
+    fpgadate = fpgabase[FPGADATE];
+    return fpgadate;
+}
+
+cell getfpgaversion()
+{
+    unsigned long int fpgaversion;
+    fpgaversion = fpgabase[FPGAVERSION];
+    return fpgaversion;
+}
+
 
 cell getforthdate()
 {
@@ -98,6 +118,32 @@ cell getforthversion()
 }
 
 
+
+cell rtc_init()
+{
+    // initialize RTC
+    MSS_RTC_init(MSS_RTC_BINARY_MODE, 32767);
+}
+
+cell rtc_start()
+{
+    // start  RTC
+    MSS_RTC_start();
+}
+
+cell rtc_stop()
+{
+    // stop  RTC
+    MSS_RTC_stop();
+}
+
+cell rtc_read()
+{
+    unsigned long long value;
+    value = MSS_RTC_get_binary_count();
+    return (unsigned long)value;
+}
+
 cell ((* const ccalls[])()) = {
 // Add your own routines here
   C(lfill)           //c lfill           { a.adr i.len i.value -- }
@@ -109,6 +155,13 @@ cell ((* const ccalls[])()) = {
   C(byte_checksum)   //c byte-checksum   { a.adr i.len -- i.checksum }
   C(getforthdate)    //c forthdate@      { -- i.forthdate }
   C(getforthversion) //c forthversion@   { -- i.forthversion }
+  C(getfpgadate)     //c fpgadate@       { -- i.fpgadate }
+  C(getfpgaversion)  //c fpgaversion@    { -- i.fpgaversion }
+  C(rtc_init)        //c rtc-init        { -- }
+  C(rtc_start)       //c rtc-start       { -- }
+  C(rtc_stop)        //c rtc-stop        { -- }
+  C(rtc_read)        //c rtc-read        { -- i.rtc_binary }
+
 };
 
 
