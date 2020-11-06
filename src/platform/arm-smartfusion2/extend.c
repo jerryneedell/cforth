@@ -10,6 +10,8 @@
 // FPGA registers - relative to *fgpabase - 0x30000000
 #define FPGADATE 0x80/4
 #define FPGAVERSION 0x84/4
+#define PPS_CLEAR 0x10000C/4
+#define LED 0
 
 volatile unsigned long *fpgabase = (volatile unsigned long *)0x30000000;
 
@@ -144,6 +146,26 @@ cell rtc_read()
     return (unsigned long)value;
 }
 
+cell pps_enable()
+{
+     /* Clear Pending PPS Interrupt*/
+    NVIC_ClearPendingIRQ(FabricIrq0_IRQn);
+
+     /* Enable Fabric Interrupt*/
+    NVIC_EnableIRQ(FabricIrq0_IRQn);
+
+}
+
+cell pps_disable()
+{
+     /* Disabling PPS Interrupt*/
+    NVIC_DisableIRQ(FabricIrq0_IRQn);
+     /* Clear Pending Fabric Interrupts*/
+    NVIC_ClearPendingIRQ(FabricIrq0_IRQn);
+
+}
+
+
 cell ((* const ccalls[])()) = {
 // Add your own routines here
   C(lfill)           //c lfill           { a.adr i.len i.value -- }
@@ -161,7 +183,18 @@ cell ((* const ccalls[])()) = {
   C(rtc_start)       //c rtc-start       { -- }
   C(rtc_stop)        //c rtc-stop        { -- }
   C(rtc_read)        //c rtc-read        { -- i.rtc_binary }
+  C(pps_enable)   //c pps-enable   { -- }
+  C(pps_disable)  //c pps-disable  { -- }
 
 };
 
 
+void FabricIrq0_IRQHandler(void)
+{
+    // reset the PPS signal
+    fpgabase[PPS_CLEAR] = 0;
+    // toggle LEDs
+    fpgabase[LED] ^= 0xff;
+    NVIC_ClearPendingIRQ(FabricIrq0_IRQn);
+
+}
