@@ -37,7 +37,7 @@
 /*==============================================================================
  * SERDES Interface configuration
  */
-#define MSS_SYS_SERDES_0_CONFIG_BY_CORTEX   0
+#define MSS_SYS_SERDES_0_CONFIG_BY_CORTEX   1
 #if MSS_SYS_SERDES_0_CONFIG_BY_CORTEX
 #include "sys_config_SERDESIF_0.h"
 #endif

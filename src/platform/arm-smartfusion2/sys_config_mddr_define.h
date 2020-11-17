@@ -1,5 +1,5 @@
 /*=============================================================*/
-/* Created by Microsemi SmartDesign Wed Nov 04 10:26:17 2020   */
+/* Created by Microsemi SmartDesign Fri Nov 06 13:20:48 2020   */
 /*                                                             */
 /* Warning: Do not modify this file, it may lead to unexpected */
 /*          functional failures in your design.                */
@@ -13,18 +13,18 @@
 #define MDDR_DDRC_DYN_POWERDOWN_CR 0x2
 #define MDDR_DDRC_DYN_DEBUG_CR 0x0
 #define MDDR_DDRC_MODE_CR 0x81
-#define MDDR_DDRC_ADDR_MAP_BANK_CR 0x99F
+#define MDDR_DDRC_ADDR_MAP_BANK_CR 0x999
 #define MDDR_DDRC_ECC_DATA_MASK_CR 0x0
 #define MDDR_DDRC_ADDR_MAP_COL_1_CR 0x3333
 #define MDDR_DDRC_ADDR_MAP_COL_2_CR 0xFFFF
 #define MDDR_DDRC_ADDR_MAP_COL_3_CR 0x3300
-#define MDDR_DDRC_ADDR_MAP_ROW_1_CR 0x7777
-#define MDDR_DDRC_ADDR_MAP_ROW_2_CR 0x777
+#define MDDR_DDRC_ADDR_MAP_ROW_1_CR 0x8888
+#define MDDR_DDRC_ADDR_MAP_ROW_2_CR 0x888
 #define MDDR_DDRC_INIT_1_CR 0x1
 #define MDDR_DDRC_CKE_RSTN_CYCLES_1_CR 0x4200
 #define MDDR_DDRC_CKE_RSTN_CYCLES_2_CR 0x8
 #define MDDR_DDRC_INIT_MR_CR 0x32
-#define MDDR_DDRC_INIT_EMR_CR 0x2
+#define MDDR_DDRC_INIT_EMR_CR 0x0
 #define MDDR_DDRC_INIT_EMR2_CR 0x0
 #define MDDR_DDRC_INIT_EMR3_CR 0x0
 #define MDDR_DDRC_DRAM_BANK_TIMING_PARAM_CR 0x0

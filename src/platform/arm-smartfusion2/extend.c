@@ -5,8 +5,8 @@
 #include "mss_rtc.h"
 
 // Prototypes
-#define FORTHVERSION 0x0002
-#define FORTHDATE 0x7e40b05
+#define FORTHVERSION 0x0001
+#define FORTHDATE 0x7e40b07
 // FPGA registers - relative to *fgpabase - 0x30000000
 #define FPGADATE 0x80/4
 #define FPGAVERSION 0x84/4
