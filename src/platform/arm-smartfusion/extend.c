@@ -9,7 +9,7 @@
 
 // FPGA registers - relative to *fgpabase - 0x40050000
 #define FORTHVERSION 0x0000
-#define FORTHDATE 0x7e40a17
+#define FORTHDATE 0x7e40b13
 
 volatile unsigned long *fpgabase = (volatile unsigned long *)0x40050000;
 
