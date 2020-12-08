@@ -12,8 +12,8 @@ d) Makefile fragments factored better, and use pattern rules extensively
 e) Makefiles in build directories simplified
 
 
-# Smartfusion additions
+# Smartfusion/TRACERS additions
 
-added subdirectories in build, src/app, src/platform for the SmartFusion A2F200M3 Eval Kit.
+added subdirectories in build, src/app, src/platform for the SmartFusion A2F500M3G Eval Kit.
 
 see README.md in buid/arm-smartfusion

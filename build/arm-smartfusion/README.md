@@ -1,23 +1,15 @@
 cforth
 ======
 
-# Smartfusion additions
+# Smartfusion TRACERS TIS additions
 
-added subdirectories in build, src/app, src/platform for the SmartFusion A2F200M3 Eval Kit.
+added subdirectories in build, src/app, src/platform for the SmartFusion A2F500M3G Eval Kit.
 To build:
 ```
 cd build/arm-smartfusion
 make clean
 make
 ```
-
-# Watchdog
-* Watchdog is enabled buy default (approx 5 seconds)
-* Forth words
-  * wdog   ( -- )  reloads the watchdog -- use in any long loops
-  * wdog-disable ( -- )  disables the Watchdog -- only reenabled afte Power Cycle (not RESET)
-* Watchdog is reloaded automatically while at the keyboard prompt or by key?
-* Must be reloaded manually if long words are executed.
 
 
 Requires arm-none-eabi toolchain:
@@ -34,7 +26,7 @@ see: src/app/arm-smartfusion/app.fth
 ## Adding new Forth words in C 
 see: src/platform/arm-smartfusion/extend.c
 
-* added timer1-init,timer1-enabled,timer1-start,timer1-stop,fabric-enable,fabric-disable
+* added fabric-enable,fabric-disable,irqx-enabel,irqx-disable
 * examples for adding ISRs are in src/platform/arm-smartfusion/extend.c
   * aded examples for Timer1 and Fabric Interrupts
 
@@ -43,7 +35,7 @@ in src/platform/arm-smatfusion/targets.mk there are three options for selecting 
 comment/uncomment as desired:
 * debug-in-actel-smartfusion-envm.ld -- for load via JLink to Flash @0x60000000 - mirrored to 0x00000000
 * production-execute-in-place.ld  --- for building into Libero design - loads at 0x00000000  -- cannot load via JLink
-* production-relocateable-executable.ld --  not used -- kept as an example must alos comment/uncomment objcopy command a few lines below as noted,
+* production-relocateable-executable.ld --  not used -- kept as an example must also comment/uncomment objcopy command a few lines below as noted,
 
 ## Loading via JLink:
 connect terminal session via USB
@@ -53,7 +45,7 @@ screen /dev/ttyUSB0 57600
 ```
 JLinkExe
 connect
-Device: A2F200M3F
+Device: A2F500M3G
 Target Interface: JTAG -- accept default
 JTConf - Auto-Detect -- accept default
 Speed 4000 kHz  -- accept default
@@ -62,13 +54,15 @@ Speed 4000 kHz  -- accept default
  setPC 0
  g
  code should now be running
+
+or exit JLinkExe (q) aflter loading the file and press RESET on the board
 ```
 
 ### JLink mini EDU
 ```
 JLinkExe
 connect
-Device: A2F200M3F
+Device: A2F500M3G
 Target Interface: SWD 
 Speed 4000 kHz  -- accept default
  after connect:
@@ -76,6 +70,8 @@ Speed 4000 kHz  -- accept default
  setPC 0
  g
  code should now be running
+
+or exit JLinkExe (q) aflter loading the file and press RESET on the board
 ``` 
 
 ## using GDB
@@ -85,11 +81,11 @@ screen /dev/ttyUSB0 57600
 
 ### full sized EDU
 ```
-JLinkGDBServer -i JTAG -device A2F2000M3F
+JLinkGDBServer  -device A2F5000M3G
 ```
 ### mini EDU
 ```
-JLinkGDBServer -i SWD -device A2F2000M3F
+JLinkGDBServer -i SWD -device A2F5000M3G
 ```
 it will connect and listen on port 2331
 
