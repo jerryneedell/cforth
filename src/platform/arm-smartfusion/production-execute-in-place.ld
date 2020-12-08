@@ -21,7 +21,7 @@ __DYNAMIC  =  0;
 MEMORY
 {
   /* SmartFusion internal eNVM */
-  rom (rx) : ORIGIN = 0, LENGTH = 256k
+  rom (rx) : ORIGIN = 0, LENGTH = 512k
   
   /* SmartFusion internal eSRAM */
   ram (rwx) : ORIGIN = 0x20000000, LENGTH = 64k

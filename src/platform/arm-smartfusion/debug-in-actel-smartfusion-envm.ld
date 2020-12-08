@@ -29,10 +29,10 @@ MEMORY
    */
 
   /* SOFTCONSOLE FLASH USE: actel-smartfusion-envm */
-  rom (rx)  : ORIGIN = 0x60000000, LENGTH = 256k
+  rom (rx)  : ORIGIN = 0x60000000, LENGTH = 512k
   
   /* SmartFusion internal eNVM mirrored to 0x00000000 */
-  romMirror (rx) : ORIGIN = 0x00000000, LENGTH = 256k
+  romMirror (rx) : ORIGIN = 0x00000000, LENGTH = 512k
 
   /* SmartFusion internal eSRAM */
   ram (rwx) : ORIGIN = 0x20000000, LENGTH = 64k

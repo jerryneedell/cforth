@@ -28,7 +28,7 @@ void raw_putchar(char c)
 int kbhit() {
   uint8_t key;
             //Reload watchdog.
-            MSS_WD_reload();
+            //MSS_WD_reload();
 
   return   MSS_UART_get_rx(&g_mss_uart0, &key, 1);
 }
@@ -40,7 +40,7 @@ int getkey()
   do
         {
             //Reload watchdog.
-            MSS_WD_reload();
+            //MSS_WD_reload();
             rx_size = MSS_UART_get_rx(&g_mss_uart0, &key, 1);
         }while(rx_size == 0);
 
@@ -65,7 +65,7 @@ void init_io()
  /*
       * Reload watchdog.
       */
-     MSS_WD_reload();
+     //MSS_WD_reload();
 
 
 }
