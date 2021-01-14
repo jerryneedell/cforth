@@ -14,7 +14,7 @@ make
 
 Requires arm-none-eabi toolchain:
 https://developer.arm.com/tools-and-software/open-source-software/developer-tools/gnu-toolchain/gnu-rm/downloads
-built with Version 9-2019-q4-major
+built with Version 10-2020-q2-major
 
 ## Adding Forth words -- in Forth 
 see: src/app/arm-smartfusion/app.fth
